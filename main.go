@@ -9,12 +9,9 @@ import (
 func main() {
 
 	str := "TX04ABCD"
-	r := model.GenerarRdo(str)
+	r, err := model.GenerarRdo(str)
 
-	if r.Length == 0 && (len(r.Value)) == 0 {
-		fmt.Println("Error de cadena")
-	} else {
+	if err == nil {
 		fmt.Println(r)
 	}
-
 }

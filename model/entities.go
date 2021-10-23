@@ -36,7 +36,7 @@ func getValue(str string) string { // Devuelve los caracteres a partir de la pos
 	return str[4:]
 }
 
-func GenerarRdo(s string) Result {
+func GenerarRdo(s string) (Result, error) {
 	var r Result
 	if len(s) >= 4 {
 		t := getType(s)
@@ -56,5 +56,5 @@ func GenerarRdo(s string) Result {
 			}
 		}
 	}
-	return r
+	return r, nil
 }

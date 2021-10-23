@@ -7,12 +7,6 @@ import (
 	"tudai2021.com/model"
 )
 
-func TestGenerarRdo(t *testing.T) {
-	str := "AB01CD"
-	result := model.NewResult("AB", 1, "CD")
-	r := model.GenerarRdo(str)
-	assert.Equal(t, r, result, "Fallo al generar la instancia de la estructura")
-}
 func TestParser(t *testing.T) {
 	var cases = []struct {
 		Input   string // input string in order to be parsed
@@ -28,9 +22,10 @@ func TestParser(t *testing.T) {
 	}
 
 	for _, testData := range cases {
-		test := model.GenerarRdo(testData.Input)
-		assert.Equal(t, test.Type, testData.Type, testData.Success)
-		assert.Equal(t, test.Value, testData.Value, testData.Success)
-		assert.Equal(t, test.Length, testData.Length, testData.Success)
+		r, err := model.GenerarRdo(testData.Input)
+		assert.Equal(t, err == nil, testData.Success)
+		assert.Equal(t, r.Type, testData.Type, testData.Success)
+		assert.Equal(t, r.Value, testData.Value, testData.Success)
+		assert.Equal(t, r.Length, testData.Length, testData.Success)
 	}
 }
