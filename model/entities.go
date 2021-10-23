@@ -24,19 +24,20 @@ func validateChar(str string) bool {
 	return true
 }
 
-func getType(str string) string { // Devuelve los primeros 2 caracteres de la cadena como t
+func getType(str string) string {
 	return str[:2]
 }
 
-func getLength(str string) string { // Devuelve la cantidad de caracteres pasado a enteros
+func getLength(str string) string {
 	return str[2:4]
 
 }
-func getValue(str string) string { // Devuelve los caracteres a partir de la posicion 3 de la cadena
+func getValue(str string) string {
 	return str[4:]
 }
 
-func GenerarRdo(s string) (Result, error) {
+func GenerarRdo(s string) Result {
+
 	var r Result
 	if len(s) >= 4 {
 		t := getType(s)
@@ -52,9 +53,11 @@ func GenerarRdo(s string) (Result, error) {
 						r.Length = sv
 						r.Value = v
 					}
+
 				}
 			}
 		}
+
 	}
-	return r, nil
+	return r
 }
